@@ -16,19 +16,15 @@ class TimeFormat
     @valid = []
     @invalid = []
     @formats = params['format'].split(',')
-
-    detect_formats
   end
 
-  def call
+  def time
     Time.now.strftime(@valid.join('-'))
   end
 
   def valid?
     invalid.empty?
   end
-
-  private
 
   def detect_formats
     @formats.each do |format|

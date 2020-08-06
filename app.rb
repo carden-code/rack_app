@@ -19,8 +19,10 @@ class App
   def time_response
     time_format = TimeFormat.new(@params)
 
+    time_format.detect_formats
+
     if time_format.valid?
-      response(200, time_format.call)
+      response(200, time_format.time)
     else
       response(400, "Unknown time format [#{time_format.invalid.join(', ')}]")
     end
